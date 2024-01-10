@@ -93,7 +93,7 @@ function App() {
           break;
         case 'lv': setDetectLang('Latvian');
           break;
-        case 'it': setDetectLang('Lithuanian');
+        case 'lt': setDetectLang('Lithuanian');
           break;
         case 'mk': setDetectLang('Macedonian');
           break;
