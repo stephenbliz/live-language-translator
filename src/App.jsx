@@ -16,7 +16,7 @@ function App() {
 
     const options = {
       method: 'POST',
-      url: 'https://microsoft-translator-text.p.rapidapi.com/translate',
+      url: import.meta.env.VITE_Url,
       params: {
         'to[0]': lang,
         'api-version': '3.0',
@@ -25,8 +25,8 @@ function App() {
       },
       headers: {
         'content-type': 'application/json',
-        'X-RapidAPI-Key': '6621facf16msh178dd59ea70ad77p14988cjsn55f9a37462d2',
-        'X-RapidAPI-Host': 'microsoft-translator-text.p.rapidapi.com'
+        'X-RapidAPI-Key': import.meta.env.VITE_X_RapidAPI_Key,
+        'X-RapidAPI-Host': import.meta.env.VITE_X_RapidAPI_Host
       },
       data: [
         {
