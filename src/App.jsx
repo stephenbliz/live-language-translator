@@ -14,31 +14,25 @@ function App() {
 
   const handleTranslate = async ()=>{
 
+    const encodedParams = new URLSearchParams();
+    encodedParams.set('q', inputText);
+    encodedParams.set('target', lang);
+
     const options = {
       method: 'POST',
       url: import.meta.env.VITE_Url,
-      params: {
-        'to[0]': lang,
-        'api-version': '3.0',
-        profanityAction: 'NoAction',
-        textType: 'plain'
-      },
       headers: {
-        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded',
         'X-RapidAPI-Key': import.meta.env.VITE_X_RapidAPI_Key,
         'X-RapidAPI-Host': import.meta.env.VITE_X_RapidAPI_Host
       },
-      data: [
-        {
-          Text: inputText
-        }
-      ]
+      data: encodedParams,
     };
 
     try {
       const response = await axios.request(options);
-      const translated = response.data[0].translations[0].text;
-      const detect = response.data[0].detectedLanguage.language;
+      const translated = response.data.data.translations[0].translatedText;
+      const detect = response.data.data.translations[0].detectedSourceLanguage;
 
       switch(detect){
         case 'af': setDetectLang('Afrikaans');
