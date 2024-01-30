@@ -235,7 +235,7 @@ function App() {
           </select>
         </div>
         <div className="outputP">
-          {!loading &&<p ref={outputRef}>{outputText}</p>}
+          {outputText &&<p ref={outputRef}>{outputText}</p>}
           {loading && <p>Loading...</p>}
           {error && <p>{error}</p>}
         </div>
